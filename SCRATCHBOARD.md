@@ -80,10 +80,11 @@ MVP: 1, 2, 3
 HTTP VERB           ROUTE                          ACTION                     Used For
 
 GET                 /todos                         index action               index page to display all lists
-GET                 /todos/new(?)                  new action                 displays create new item
+
 GET                 /todos/:id                     show action                displays a users todos on ID in url
 GET                 /todos/:entry/edit(?)          edit action                displays edit form based on ID in url        
 GET                 /login/:id                     login bypass       
+GET                 /logout                        logout user                logout user
 POST                /todos                         create action              add an item to list
 POST                /register                      register action            register user
 GET                 /register                      show action                displays user register form
