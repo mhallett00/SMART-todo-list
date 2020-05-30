@@ -35,11 +35,16 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const todosRoutes = require("./routes/todos");
+const todosIDRoutes = require("./routes/todos:id");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/todos", todosRoutes(db));
+
+app.use("/todos:id", todosIDRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -53,3 +58,14 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+
+// GET                 /todos                         index action               index page to display all lists
+
+// GET                 /todos/:id                     show action                displays a users todos on ID in url
+// GET                 /todos/:entry/edit(?)          edit action                displays edit form based on ID in url
+// GET                 /login/:id                     login bypass
+// GET                 /logout                        logout user                logout user
+// POST                /todos                         create action              add an item to list
+// POST                /register                      register action            register user
+// GET                 /register                      show action                displays user register form
