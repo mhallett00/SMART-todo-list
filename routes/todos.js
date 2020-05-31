@@ -3,12 +3,15 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM to_dos;`;
-    console.log(query);
+    let query = `
+    SELECT to_dos.*
+    FROM to_dos
+    JOIN users ON user_id = users.id
+    WHERE users.name = '${req.session.user_id}'
+    `;
     db.query(query)
     .then(data => {
       const to_dos = data.rows;
-      console.log(to_dos);
       res.json({ to_dos })
     })
     .catch(err => {
