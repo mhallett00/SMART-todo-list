@@ -14,10 +14,25 @@ const renderTodos = function(todos) {
 // or append row to table
 // renderTodos will do actual appending
 let arrs = todos.to_dos;
-for (let todo of arrs) {
-  $('#restaurant').append(createTodo(todo.name));
 
-}
+for (let todo of arrs) {
+  if (todo.category_id === 1){
+  $('#film_shows').append(createTodo(todo.name));
+  };
+  if (todo.category_id === 2) {
+    $('#restaurants').append(createTodo(todo.name));
+  };
+  if (todo.category_id === 3) {
+    $('#products').append(createTodo(todo.name));
+  };
+  if (todo.category_id === 4){
+    $('#books').append(createTodo(todo.name));
+  };
+  if (todo.category_id === 5) {
+    $('#uncats').append(createTodo(todo.name));
+  };
+};
+
 };
 
 
