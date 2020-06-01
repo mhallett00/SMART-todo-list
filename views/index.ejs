@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Do Smartly</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -11,32 +11,68 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/to_dos.js"></script>
   </head>
-
   <body>
+
     <h1>Hello World!</h1>
+
     <main>
-      <table>
+
+      <form action="/api/to_dos" method="POST" id="newToDo">
+        <div>
+          <label for="newToDo_name">
+            Add new to-do!
+          </label>
+          <input type="text" name="name" placeholder="name de name" id="newToDo_name">
+        </input>
+        </div>
+        <div>
+          <button type="submit" value="submit">Add or whatever</button>
+        </div>
+      </form>
+
+      <!-- products  -->
+      <table id="products">
         <tr>
-          <th>Eat</th>
-          <th>Watch</th>
-          <th>Read</th>
           <th>Buy</th>
         </tr>
         <tr>
-          <td id="restaurants"></td>
-          <td id="film_shows"></td>
-          <td id="books"></td>
-          <td id="products"></td>
+          <td></td>
         </tr>
       </table>
-
-      <table>
+      <!-- books  -->
+      <table id="books">
         <tr>
-          <th>uncategorized</th>
-
+          <th>Read</th>
         </tr>
         <tr>
-          <td id="uncats"></td>
+          <td></td>
+        </tr>
+      </table>
+      <!-- film/shows  -->
+      <table id="film_shows">
+        <tr>
+          <th>Watch</th>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <!-- restaurants  -->
+      <table id="restaurants">
+        <tr>
+          <th>Eat</th>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <!-- uncategorized  -->
+      <table id="uncategorized">
+        <tr>
+          <th>uncategorized</th>
+        </tr>
+        <tr>
+          <td></td>
         </tr>
       </table>
     </main>
