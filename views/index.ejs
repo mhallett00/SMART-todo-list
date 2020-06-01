@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta Information -->
     <title>Do Smartly</title>
-
+    <meta charset="UTF-8">
+    <!-- Disable Viewport -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <!-- Style CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-todo.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/to-dos.css" type="text/css" />
+    <!-- Font Family -->
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;900&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/to_dos.js"></script>
   </head>
+  <%- include('partials/_header') %>
+
   <body>
 
     <h1>Hello World!</h1>
@@ -30,51 +41,54 @@
         </div>
       </form>
 
-      <!-- products  -->
-      <table id="products">
-        <tr>
-          <th>Buy</th>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-      </table>
-      <!-- books  -->
-      <table id="books">
-        <tr>
-          <th>Read</th>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-      </table>
-      <!-- film/shows  -->
-      <table id="film_shows">
-        <tr>
-          <th>Watch</th>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-      </table>
-      <!-- restaurants  -->
-      <table id="restaurants">
-        <tr>
-          <th>Eat</th>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-      </table>
-      <!-- uncategorized  -->
-      <table id="uncategorized">
-        <tr>
-          <th>uncategorized</th>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-      </table>
+      <div class="tables">
+        <!-- products  -->
+        <table id="products">
+          <tr>
+            <th>Buy</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+        <!-- books  -->
+        <table id="books">
+          <tr>
+            <th>Read</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+        <!-- film/shows  -->
+        <table id="film_shows">
+          <tr>
+            <th>Watch</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+        <!-- restaurants  -->
+        <table id="restaurants">
+          <tr>
+            <th>Eat</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+        <!-- uncategorized  -->
+        <table id="uncategorized">
+          <tr>
+            <th>uncategorized</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+      </div>
     </main>
   </body>
 </html>
+
