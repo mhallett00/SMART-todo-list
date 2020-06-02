@@ -5,11 +5,17 @@
   align-content: center;
   justify-content: space-evenly;
   flex-direction: row;
+  overflow-wrap: anywhere;
 }
 
 .tables table,
 .tables td {
-  border: solid;
+  justify-items: center;
+  align-items: center;
+}
+
+.tables tbody {
+  border-bottom: solid;
 }
 
 .tables thead,

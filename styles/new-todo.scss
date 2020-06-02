@@ -1,6 +1,38 @@
-#newToDo {
+form {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
+  flex-flow: column wrap;
   align-content: center;
+
+  .text-box {
+    width: 70%;
+    font-size: 2rem;
+    align-items: center;
+    overflow-wrap: anywhere;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  #newToDo {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-width: 0 0 5px 0;
+  }
+
+  placeholder {
+    align-content: center;
+  }
+
+  .submit-button {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  button {
+    border: solid;
+  }
+
 }
