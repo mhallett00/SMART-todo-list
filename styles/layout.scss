@@ -1,21 +1,17 @@
-// See: https://sass-lang.com/
+/* // See: https://sass-lang.com/ */
 
 body {
   background-color: #EEE;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  background-color: #f4f1ec;
+  font-size: 1rem;
 
-  h1 {
+  body h1 {
     color: #244751;
   }
 }
 
-table,
-td {
-    border: 1px solid #333;
-}
-
-thead,
-tfoot {
-    background-color: #333;
-    color: #fff;
-}
 
