@@ -10,6 +10,7 @@ const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
 const cookieSession = require('cookie-session');
+const request  = require('request');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -42,6 +43,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const todosRoutes = require("./routes/todos");
+// const apiPing = require("./routes/api")
 // const todosIDRoutes = require("./routes/todos:id");
 
 // Mount all resource routes
@@ -49,6 +51,7 @@ const todosRoutes = require("./routes/todos");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/to_dos", todosRoutes(dbhelpers));
+// app.use("/https://www.googleapis.com/books/v1/volumes?q=flowers+intitle:keyes&`key`=AIzaSyAKjPZ7x_sUR7okP5SJEoY0MDHMVsseZfo", apiPing(dbhelpers));
 
 // app.use("/todos:id", todosIDRoutes(db));
 // Note: mount other resources here, using the same pattern above
