@@ -24,7 +24,7 @@ module.exports = () => {
   //user logs in
   router.post("/", (req,res) => {
     //check db for user's email
-    getUserWithEmail(req.body.email)
+    dbhelpers.getUserWithEmail(req.body.email)
     .then(user => {
       if (!user) {
         res.json({error: 'User does not exist'});
