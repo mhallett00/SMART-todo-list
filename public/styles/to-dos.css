@@ -1,3 +1,25 @@
+.tables {
+  margin-top: 5rem;
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  overflow-wrap: anywhere;
+}
 
+.tables table,
+.tables td {
+  justify-items: center;
+  align-items: center;
+}
 
-/*# sourceMappingURL=to-dos.css.map */
+.tables tbody {
+  border-bottom: solid;
+}
+
+.tables thead,
+.tables tfoot {
+  background-color: #333;
+  color: #fff;
+}

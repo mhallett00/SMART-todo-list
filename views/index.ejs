@@ -24,20 +24,15 @@
 
   <body>
 
-    <h1>Hello World!</h1>
-
     <main>
 
-      <form action="/api/to_dos" method="POST" id="newToDo">
-        <div>
-          <label for="newToDo_name">
-            Add new to-do!
-          </label>
-          <input type="text" name="name" placeholder="name de name" id="newToDo_name">
-        </input>
+      <form action="/api/to_dos" method="POST" class="new-to-do">
+        <div class="text-box">
+          <input type="text" name="name" placeholder="What do you want to accomplish today?" id="newToDo">
+          </input>
         </div>
-        <div>
-          <button type="submit" value="submit">Add or whatever</button>
+        <div class="submit-button">
+          <button type="submit" value="submit">Add Item</button>
         </div>
       </form>
 
