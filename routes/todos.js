@@ -33,9 +33,9 @@ module.exports = (dbhelpers) => {
     //       console.error(e);
     //       res.send(e)
     //     });
-    console.log(req.body.name);
-    apiSorter(req.body.name, result => {
-      dbhelpers.addTodo({...req.body, user_id: userId, category_id: result})
+
+    apiSorter(req.body.name).then(categoryId => {
+      dbhelpers.addTodo({...req.body, user_id: userId, category_id: categoryId})
         .then(todo => {
           res.send(todo);
         })
@@ -44,6 +44,18 @@ module.exports = (dbhelpers) => {
           res.send(e)
         });
     });
+
+    // console.log(req.body.name);
+    // apiSorter(req.body.name, result => {
+    //   dbhelpers.addTodo({...req.body, user_id: userId, category_id: result})
+    //     .then(todo => {
+    //       res.send(todo);
+    //     })
+    //     .catch(e => {
+    //       console.error(e);
+    //       res.send(e)
+    //     });
+    // });
     // console.log(categoryId);
   });
 
