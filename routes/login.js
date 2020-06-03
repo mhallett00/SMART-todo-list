@@ -12,7 +12,7 @@ module.exports = () => {
     // we need to install cookies (cookieSession)?
     if (req.session.user_id) {
       //redirects to todos (we needs todos ejs)
-      res.render('/login');
+      res.redirect('/todos');
 
     } else {
       let templateVars = {
