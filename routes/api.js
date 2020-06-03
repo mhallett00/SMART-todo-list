@@ -3,10 +3,10 @@ const request = require('request-promise-native');
 
 const apiBook = function(title) {
   const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}`
-  request(url).then((body) => {
+  return request(url).then((body) => {
     // console.log(body);
     const books = JSON.parse(body);
-    console.log('api.jsbooks', books.totalItems > 0, books.totalItems)
+    // console.log('api.jsbooks', books.totalItems > 0, books.totalItems)
     return books.totalItems > 0;
   });
 };
@@ -18,9 +18,9 @@ const apiBook = function(title) {
 const apiRestaurant = function(name) {
   const apiKey = "pud2EC91z6vLKUlqwQZWKTapXz-zNnSIRg1CbbxRAEuQBhKlFZGuqUCaVHDc9dGxDT78s8F892PatU_yRI2fZmqbeFQp16zSdBUsWDLKY31XDWPvHBDDM0UG5XbWXnYx";
   const url = { url: `https://api.yelp.com/v3/businesses/search?term=${name}&location=toronto`, headers: { "Authorization": "Bearer " + apiKey } }
-  request(url).then((body) => {
+  return request(url).then((body) => {
     const restaurants = JSON.parse(body);
-    console.log('api.jsrestaurant', restaurants.businesses.length > 0, restaurants.businesses.length)
+    // console.log('api.jsrestaurant', restaurants.businesses.length > 0, restaurants.businesses.length)
     return restaurants.businesses.length > 0;
   });
 };
@@ -29,7 +29,7 @@ const apiFilmShow = function(title) {
   const url = `http://www.omdbapi.com/?t=${title}&apikey=4432dfaa`
   return request(url).then((body) => {
     const filmShow = JSON.parse(body);
-    console.log('api.jsshow', filmShow.Response === "True", filmShow.Response)
+    // console.log('api.jsshow', filmShow.Response === "True", filmShow.Response)
     return filmShow.Response === "True";
   });
 };
@@ -38,7 +38,7 @@ const apiProduct = function(name) {
   const url = `http://api.wolframalpha.com/v2/query?appid=QTVQHV-XVVUL6LT8G&input=${name}&output=json`;
   return request(url).then((body) => {
     const product = JSON.parse(body);
-    console.log('api.jsproduct', product.queryresult.datatypes === 'ConsumerProductsPTE', product.queryresult.datatypes)
+    // console.log('api.jsproduct', product.queryresult.datatypes === 'ConsumerProductsPTE', product.queryresult.datatypes)
     return product.queryresult.datatypes === 'ConsumerProductsPTE';
   }); // .catch(function())
 };
