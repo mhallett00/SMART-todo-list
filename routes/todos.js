@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { apiBook } = require('./api');
+const { apiSorter } = require('../helpers/apihelpers');
 
 module.exports = (dbhelpers) => {
 
@@ -24,16 +24,27 @@ module.exports = (dbhelpers) => {
   router.post('/', async (req, res) => {
     const userId = await dbhelpers.getIdWithUsername(req.session.user_id);
     // console.log({...req.body, user_id: userId})
-    // const categoryId = await apiBook(callback, req.body)
+    // const categoryId = await apiSorter(req.body);
+    // dbhelpers.addTodo({...req.body, user_id: userId, category_id: categoryId})
+    //     .then(todo => {
+    //       res.send(todo);
+    //     })
+    //     .catch(e => {
+    //       console.error(e);
+    //       res.send(e)
+    //     });
+    console.log(req.body.name);
+    apiSorter(req.body.name, result => {
+      dbhelpers.addTodo({...req.body, user_id: userId, category_id: result})
+        .then(todo => {
+          res.send(todo);
+        })
+        .catch(e => {
+          console.error(e);
+          res.send(e)
+        });
+    });
     // console.log(categoryId);
-    dbhelpers.addTodo({...req.body, user_id: userId})
-      .then(todo => {
-        res.send(todo);
-      })
-      .catch(e => {
-        console.error(e);
-        res.send(e)
-      });
   });
 
   return router;
