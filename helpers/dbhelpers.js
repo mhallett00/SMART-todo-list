@@ -38,9 +38,9 @@ module.exports = (db) => {
     return db.query(`
     INSERT INTO to_dos (
       user_id, name, category_id, status_id)
-      VALUES ($1, $2, 1, 1)
+      VALUES ($1, $2, $3, 1)
     RETURNING *;
-    `, [todo.user_id, todo.name])
+    `, [todo.user_id, todo.name, todo.category_id])
     .then (res => res.rows);
   };
 
