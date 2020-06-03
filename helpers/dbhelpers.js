@@ -56,5 +56,16 @@ module.exports = (db) => {
     .catch(err => console.error(500));
   };
 
-  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos };
+  const newUser = (userObj) => {
+    const { name, email, password } = userObj;
+    return db.query( `
+    INSERT INTO users (name, email, password)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+    `, [name, email, bcrypt.hashSync(password, 10)])
+    .then (res => res.rows[0])
+    .catch(err => console.error('error adding new user',err))
+  };
+
+  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, newUser };
 };

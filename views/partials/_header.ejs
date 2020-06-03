@@ -3,9 +3,27 @@
     <div class="nav-title">
       <h4>Done Smartly<h4a>
     </div>
+
     <div class="nav-header">
-      <a class="nav-item nav-link text-light" href="/register">Register</a>
-      <a class="nav-item nav-link text-light" href="/login">Login</a>
+      <form action="/logout" method="POST">
+        <div class="nav-username-display">
+          <label for="user" style="margin: 1em">Hello, </label>
+          <button type="submit" class="btn btn-primary">Logout</button>
+        </div>
+      </form>
+
+      <form action="/login" method="POST">
+        <div class="nav-login-display">
+          <input type="text" placeholder="Username" name="username">
+          <input type="text" placeholder="Password" name="psw">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+
     </div>
   </nav>
 </header>
+
+
+
+

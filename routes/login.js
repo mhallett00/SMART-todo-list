@@ -2,15 +2,17 @@ const express = require('express');
 const router  = express.Router();
 //install bcrypt
 const bcrypt  = require('bcrypt');
-const { getUserWithEmail } = require('../helpers/database');
+const { getUserWithEmail } = require('../helpers/dbhelpers');
 
 module.exports = () => {
   // loads login/register page
-  router.get("/", (req, res) => {
+
+  router.get("/login", (req, res) => {
+    const user = req.session.user_id;
     // we need to install cookies (cookieSession)?
     if (req.session.user_id) {
       //redirects to todos (we needs todos ejs)
-      res.redirect('/todos');
+      res.render('/login');
 
     } else {
       let templateVars = {
@@ -20,6 +22,12 @@ module.exports = () => {
       res.render("login", templateVars);
     }
   });
+
+  // app.get("/login", (req, res) => {
+  //   const user = users[req.session["user_id"]];
+  //   const templateVars = { user };
+  //   res.render("urls_login", templateVars);
+  // });
 
   //user logs in
   router.post("/", (req,res) => {
