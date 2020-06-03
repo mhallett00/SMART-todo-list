@@ -53,7 +53,7 @@ module.exports = (db) => {
     `;
     return db.query(query)
     .then(data => {
-      console.log(data.rows)
+      // console.log(data.rows)
       return data.rows
     })
     .catch(err => console.error(500));
@@ -91,7 +91,7 @@ UPDATE to_dos
     `;
     return db.query(query)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       data.rows})
     .catch(err => console.error(500));
   }
@@ -107,10 +107,5 @@ UPDATE to_dos
     .catch(err => console.error(500));
   }
 
-  console.log('Hello');
-
   return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId };
 };
-
-
-console.log('Hello?');
