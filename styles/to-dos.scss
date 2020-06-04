@@ -1,4 +1,6 @@
 .tables {
+  padding-left: 2rem;
+  padding-right: 2rem;
   margin-top: 5rem;
   display: flex;
   align-items: flex-start;
@@ -7,24 +9,31 @@
   flex-direction: row;
   overflow-wrap: anywhere;
 
+  table {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 20%;
 
-  td {
-    padding-top: 2rem;
-    font-size: 1.5rem;
-    justify-items: center;
-    align-items: center;
-  }
 
-  th {
-    font-size: 2rem;
-    border-bottom: solid;
-    text-align: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    td {
+      padding-top: 2rem;
+      font-size: 1.5rem;
+      justify-items: center;
+      align-items: center;
+    }
 
-    tr {
+    th {
+      font-size: 2rem;
+      border-bottom: solid;
+      text-align: center;
       padding-top: 1rem;
       padding-bottom: 1rem;
+
+      tr {
+        font-size: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
     }
   }
 

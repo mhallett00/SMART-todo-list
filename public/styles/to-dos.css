@@ -1,4 +1,6 @@
 .tables {
+  padding-left: 2rem;
+  padding-right: 2rem;
   margin-top: 5rem;
   display: flex;
   align-items: flex-start;
@@ -8,14 +10,20 @@
   overflow-wrap: anywhere;
 }
 
-.tables td {
+.tables table {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 20%;
+}
+
+.tables table td {
   padding-top: 2rem;
   font-size: 1.5rem;
   justify-items: center;
   align-items: center;
 }
 
-.tables th {
+.tables table th {
   font-size: 2rem;
   border-bottom: solid;
   text-align: center;
@@ -23,7 +31,8 @@
   padding-bottom: 1rem;
 }
 
-.tables th tr {
+.tables table th tr {
+  font-size: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
