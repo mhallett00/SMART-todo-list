@@ -6,11 +6,11 @@ const apiBook = function(title) {
   return request(url).then((body) => {
     // console.log(body);
     const books = JSON.parse(body);
-    // console.log('api.jsbooks', books.totalItems > 0, books.items[0].volumeInfo.title)
-    if (books.items[0]){
+    console.log('api.jsbooks', books)
+    if (books.items[0].volumeInfo.title){
       return title === encodeURI(books.items[0].volumeInfo.title);
     }
-  });
+  }).catch(error => false);
 };
 
 // https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaAKjPZ7x_sUR7okP5SJEoY0MDHMVsseZfo
@@ -22,31 +22,33 @@ const apiRestaurant = function(name) {
   const url = { url: `https://api.yelp.com/v3/businesses/search?term=${name}&location=toronto&category='restaurants'`, headers: { "Authorization": "Bearer " + apiKey } }
   return request(url).then((body) => {
     const restaurants = JSON.parse(body);
-    // console.log('api.jsrestaurant', restaurants.businesses.length > 0, encodeURI(restaurants.businesses[0].name))
-    if (restaurants.businesses[0]){
+    console.log('api.jsrestaurant', typeof restaurants.businesses[0], typeof encodeURI(restaurants.businesses[0].name))
+    if (restaurants.businesses[0].name){
       return name === encodeURI(restaurants.businesses[0].name);
     }
-  });
+  }).catch(error => false);
 };
 
 const apiFilmShow = function(title) {
   const url = `http://www.omdbapi.com/?t=${title}&apikey=4432dfaa`
   return request(url).then((body) => {
     const filmShow = JSON.parse(body);
-    // console.log('api.jsshow', filmShow.Response === "True", filmShow.Title)
-    if (filmShow) {
+    console.log('api.jsshow', typeof filmShow, typeof filmShow.Title)
+    if (filmShow.Title) {
       return title === encodeURI(filmShow.Title);
     }
-  });
+  }).catch(error => false);
 };
 
 const apiProduct = function(name) {
   const url = `http://api.wolframalpha.com/v2/query?appid=QTVQHV-XVVUL6LT8G&input=${name}&output=json`;
   return request(url).then((body) => {
     const product = JSON.parse(body);
-    // console.log('api.jsproduct', product.queryresult.datatypes === 'ConsumerProductsPTE', product)
-    return product.queryresult.datatypes === 'ConsumerProductsPTE' || product.queryresult.datatypes === 'ExpandedFood';;
-  }); // .catch(function())
+    console.log('api.jsproduct', typeof product, typeof product)
+    if (product.queryresult.datatypes) {
+      return product.queryresult.datatypes === 'ConsumerProductsPTE' || product.queryresult.datatypes === 'ExpandedFood';;
+    }
+  }).catch(error => false);
 };
 
 // apiBook();
