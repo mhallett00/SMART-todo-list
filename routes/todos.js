@@ -76,6 +76,19 @@ module.exports = (dbhelpers) => {
     });
   })
 
+  router.post('/delete', async (req, res) => {
+    const userId = await dbhelpers.getIdWithUsername(req.session.user_id);
+
+    dbhelpers.deleteToDo({...req.body, user_id: userId})
+    .then(todo => {
+      res.send(todo);
+    })
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+    });
+  })
+
   return router;
 };
 
