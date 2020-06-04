@@ -44,11 +44,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const todosRoutes = require("./routes/todos");
-<<<<<<< HEAD
-const loginRoutes = require("./routes/login");
-=======
 // const todosEditRoutes = require("./routes/edit");
->>>>>>> 1bf21ced863fda26aa97706a06983bb6d93bca57
 // const apiPing = require("./routes/api")
 // const todosIDRoutes = require("./routes/todos:id");
 
@@ -57,11 +53,7 @@ const loginRoutes = require("./routes/login");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/to_dos", todosRoutes(dbhelpers));
-<<<<<<< HEAD
-app.use("/api/login", loginRoutes(dbhelpers));
-=======
 // app.use("/api/to_dos/edit", todosEditRoutes(dbhelpers));
->>>>>>> 1bf21ced863fda26aa97706a06983bb6d93bca57
 // app.use("/https://www.googleapis.com/books/v1/volumes?q=flowers+intitle:keyes&`key`=AIzaSyAKjPZ7x_sUR7okP5SJEoY0MDHMVsseZfo", apiPing(dbhelpers));
 
 // app.use("/todos:id", todosIDRoutes(db));
