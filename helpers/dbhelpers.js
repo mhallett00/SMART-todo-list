@@ -74,6 +74,20 @@ module.exports = (db) => {
     .catch(err => console.error(500));
   };
 
+  const deleteToDo = function (todo) {
+    let query = `
+      UPDATE to_dos
+      SET status_id = ${todo.status_id}
+      WHERE id = ${todo.id}
+      RETURNING*;
+    `
+    return db.query(query)
+    .then(data => {
+      // console.log(data.rows)
+      return data.rows
+    })
+    .catch(err => console.error(500));
+  };
 
   // sql?
   // user clicks todo item on list
@@ -122,5 +136,5 @@ UPDATE to_dos
     .catch(err => console.error(500));
   }
 
-  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId };
+  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId, deleteToDo };
 };
