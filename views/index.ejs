@@ -29,61 +29,85 @@
       <form id="newToDo" class="new-to-do">
         <div class="text-box">
           <input type="text" name="name" placeholder="What do you want to accomplish today?" >
-          </input>
-        </div>
-        <div class="submit-button">
-          <button type="submit" value="submit">Add Item</button>
-        </div>
-      </form>
-
-      <div class="tables">
-        <!-- products  -->
-        <table id="products">
-          <tr>
-            <th>Buy</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-        <!-- books  -->
-        <table id="books">
-          <tr>
-            <th>Read</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-        <!-- film/shows  -->
-        <table id="film_shows">
-          <tr>
-            <th>Watch</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-        <!-- restaurants  -->
-        <table id="restaurants">
-          <tr>
-            <th>Eat</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-        <!-- uncategorized  -->
-        <table id="uncategorized">
-          <tr>
-            <th>uncategorized</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
+        </input>
       </div>
-    </main>
-  </body>
+      <div class="submit-button">
+        <button type="submit" value="submit">Add Item</button>
+      </div>
+    </form>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tables">
+      <!-- products  -->
+      <table id="products">
+        <tr>
+          <th>Buy</th>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <!-- books  -->
+      <table id="books">
+        <tr>
+          <th>Read</th>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <!-- film/shows  -->
+      <table id="film_shows">
+        <tr>
+          <th>Watch</th>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <!-- restaurants  -->
+      <table id="restaurants">
+        <tr>
+          <th>Eat</th>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <!-- uncategorized  -->
+      <table id="uncategorized">
+        <tr>
+          <th>uncategorized</th>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </main>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
 </html>
 
