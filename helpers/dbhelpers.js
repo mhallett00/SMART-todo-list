@@ -59,6 +59,21 @@ module.exports = (db) => {
     .catch(err => console.error(500));
   };
 
+  const updateTodo = function(todo) {
+    let query = `
+      UPDATE to_dos
+      SET category_id = ${todo.category_id}
+      WHERE id = ${todo.id}
+      RETURNING *;
+    `
+    return db.query(query)
+    .then(data => {
+      // console.log(data.rows)
+      return data.rows
+    })
+    .catch(err => console.error(500));
+  };
+
 
   // sql?
   // user clicks todo item on list
@@ -78,23 +93,23 @@ UPDATE to_dos
   */
 
 
-  const updateTodo = function(newCatId, todoName, userId) {
-    console.log('HELLO');
-    let query = `
-    UPDATE to_dos
-    SET category_id = ${newCatId}
-    WHERE to_dos.id = (SELECT id
-      FROM to_dos
-      WHERE to_dos.name = ${todoName}
-      AND user_id = ${userId})
-    RETURNING *
-    `;
-    return db.query(query)
-    .then(data => {
-      // console.log(data);
-      data.rows})
-    .catch(err => console.error(500));
-  }
+  // const updateTodo = function(newCatId, todoName, userId) {
+  //   console.log('HELLO');
+  //   let query = `
+  //   UPDATE to_dos
+  //   SET category_id = ${newCatId}
+  //   WHERE to_dos.id = (SELECT id
+  //     FROM to_dos
+  //     WHERE to_dos.name = ${todoName}
+  //     AND user_id = ${userId})
+  //   RETURNING *
+  //   `;
+  //   return db.query(query)
+  //   .then(data => {
+  //     // console.log(data);
+  //     data.rows})
+  //   .catch(err => console.error(500));
+  // }
 
   const getTodoId = function(todoName) {
     let query = `
