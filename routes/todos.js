@@ -23,16 +23,6 @@ module.exports = (dbhelpers) => {
   // adds item when form is submitted
   router.post('/', async (req, res) => {
     const userId = await dbhelpers.getIdWithUsername(req.session.user_id);
-    // console.log({...req.body, user_id: userId})
-    // const categoryId = await apiSorter(req.body);
-    // dbhelpers.addTodo({...req.body, user_id: userId, category_id: categoryId})
-    //     .then(todo => {
-    //       res.send(todo);
-    //     })
-    //     .catch(e => {
-    //       console.error(e);
-    //       res.send(e)
-    //     });
 
     apiSorter(req.body.name).then(categoryId => {
       dbhelpers.addTodo({...req.body, user_id: userId, category_id: categoryId})
@@ -45,6 +35,20 @@ module.exports = (dbhelpers) => {
         });
     });
 
+
+
+    // router.post('/edit', async (req, res) => {
+    //   const userId = await dbhelpers.getIdWithUsername(req.session.user_id);
+
+    //   dbhelpers.updateTodo({...req.body, user_id: userId})
+    //   .then(todo => {
+    //     res.send(todo);
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
+    // })
     // console.log(req.body.name);
     // apiSorter(req.body.name, result => {
     //   dbhelpers.addTodo({...req.body, user_id: userId, category_id: result})
@@ -58,6 +62,19 @@ module.exports = (dbhelpers) => {
     // });
     // console.log(categoryId);
   });
+
+  router.post('/edit', async (req, res) => {
+    const userId = await dbhelpers.getIdWithUsername(req.session.user_id);
+
+    dbhelpers.updateTodo({...req.body, user_id: userId})
+    .then(todo => {
+      res.send(todo);
+    })
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+    });
+  })
 
   return router;
 };
