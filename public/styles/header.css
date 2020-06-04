@@ -1,14 +1,12 @@
-nav {
+.nav-bar {
+  font-size: 3rem;
+  font-weight: 900;
   display: flex;
   background-color: #14A697;
   width: 100%;
-  height: 5rem;
   top: 0;
-  font: "Montserrat", sans-serif;
-  font-size: 2rem;
   color: #262223;
-  align-items: center;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   padding-bottom: 1.5rem;
@@ -16,10 +14,16 @@ nav {
   align-items: center;
 }
 
-nav .nav-header {
-  justify-content: flex-end;
-  font-size: 1rem;
+.nav-bar .nav-header {
+  display: flex;
   color: #262223;
+  margin-left: auto;
+}
+
+.nav-bar .nav-header a {
+  font-size: 2rem;
+  margin-left: 2rem;
+  padding-right: 2rem;
 }
 
 /*# sourceMappingURL=header.css.map */

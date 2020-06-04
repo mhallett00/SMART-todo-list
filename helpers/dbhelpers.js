@@ -38,9 +38,9 @@ module.exports = (db) => {
     return db.query(`
     INSERT INTO to_dos (
       user_id, name, category_id, status_id)
-      VALUES ($1, $2, 1, 1)
+      VALUES ($1, $2, $3, 1)
     RETURNING *;
-    `, [todo.user_id, todo.name])
+    `, [todo.user_id, todo.name, todo.category_id])
     .then (res => res.rows);
   };
 
@@ -52,10 +52,29 @@ module.exports = (db) => {
     WHERE users.name = '${userId}'
     `;
     return db.query(query)
-    .then(data => data.rows)
+    .then(data => {
+      // console.log(data.rows)
+      return data.rows
+    })
     .catch(err => console.error(500));
   };
 
+  const updateTodo = function(todo) {
+    let query = `
+      UPDATE to_dos
+      SET category_id = ${todo.category_id}
+      WHERE id = ${todo.id}
+      RETURNING *;
+    `
+    return db.query(query)
+    .then(data => {
+      // console.log(data.rows)
+      return data.rows
+    })
+    .catch(err => console.error(500));
+  };
+
+<<<<<<< HEAD
   const newUser = (userObj) => {
     const { name, email, password } = userObj;
     return db.query( `
@@ -68,4 +87,69 @@ module.exports = (db) => {
   };
 
   return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, newUser };
+=======
+  const deleteToDo = function (todo) {
+    let query = `
+      UPDATE to_dos
+      SET status_id = ${todo.status_id}
+      WHERE id = ${todo.id}
+      RETURNING*;
+    `
+    return db.query(query)
+    .then(data => {
+      // console.log(data.rows)
+      return data.rows
+    })
+    .catch(err => console.error(500));
+  };
+
+  // sql?
+  // user clicks todo item on list
+  // menu comes up with 4 categories
+  // select category, click ok (submit)
+  // we have a category name on submission, but we need a category ID
+  // variable UI display: Watch -> html id: filmShow -> table name: film_shows = category_id?
+  // SELECT category_id FROM categories where category.name = ${categorySubmission}
+
+/*
+UPDATE to_dos
+  SET category_id = ${newCatId}
+  WHERE to_dos.id = (SELECT id
+    FROM to_dos
+    WHERE to_dos.name = ${todoName})
+  RETURNING *;
+  */
+
+
+  // const updateTodo = function(newCatId, todoName, userId) {
+  //   console.log('HELLO');
+  //   let query = `
+  //   UPDATE to_dos
+  //   SET category_id = ${newCatId}
+  //   WHERE to_dos.id = (SELECT id
+  //     FROM to_dos
+  //     WHERE to_dos.name = ${todoName}
+  //     AND user_id = ${userId})
+  //   RETURNING *
+  //   `;
+  //   return db.query(query)
+  //   .then(data => {
+  //     // console.log(data);
+  //     data.rows})
+  //   .catch(err => console.error(500));
+  // }
+
+  const getTodoId = function(todoName) {
+    let query = `
+    SELECT id
+    FROM to_dos
+    WHERE to_dos.name = ${todoName}
+    `;
+    return db.query(query)
+    .then(data => data.rows)
+    .catch(err => console.error(500));
+  }
+
+  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId, deleteToDo };
+>>>>>>> 1bf21ced863fda26aa97706a06983bb6d93bca57
 };

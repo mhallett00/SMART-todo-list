@@ -1,29 +1,30 @@
 form {
+  margin-top: 10rem;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
   flex-flow: column wrap;
   align-content: center;
 }
 
 form .text-box {
-  width: 70%;
-  font-size: 2rem;
-  align-items: center;
-  overflow-wrap: anywhere;
+  width: 55%;
+  font-size: 3rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+form .text-box input {
+  font-weight: 900;
+  text-align: center;
+  border: 0px;
+  border-bottom: solid 0.3rem;
+  width: 100%;
+  color: black;
 }
 
 form #newToDo {
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  border-width: 0 0 5px 0;
-}
-
-form placeholder {
-  align-content: center;
 }
 
 form .submit-button {
@@ -32,6 +33,10 @@ form .submit-button {
   align-content: center;
 }
 
-form button {
-  border: solid;
+form .submit-button button {
+  border-radius: 0.4rem;
+  font-size: 2rem;
+  background-color: #14A697;
+  border: 0;
+  color: white;
 }

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Meta Information -->
-    <title>Do Smartly</title>
+    <title>Done Smartly</title>
     <meta charset="UTF-8">
     <!-- Disable Viewport -->
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-todo.css" type="text/css" />
     <link rel="stylesheet" href="/styles/to-dos.css" type="text/css" />
-    <!-- Font Family -->
-    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;900&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -26,64 +27,99 @@
 
     <main>
 
-      <form action="/api/to_dos" method="POST" class="new-to-do">
+      <form id="newToDo" class="new-to-do">
         <div class="text-box">
-          <input type="text" name="name" placeholder="What do you want to accomplish today?" id="newToDo">
-          </input>
-        </div>
-        <div class="submit-button">
-          <button type="submit" value="submit">Add Item</button>
-        </div>
-      </form>
-
-      <div class="tables">
-        <!-- products  -->
-        <table id="products">
-          <tr>
-            <th>Buy</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-        <!-- books  -->
-        <table id="books">
-          <tr>
-            <th>Read</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-        <!-- film/shows  -->
-        <table id="film_shows">
-          <tr>
-            <th>Watch</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-        <!-- restaurants  -->
-        <table id="restaurants">
-          <tr>
-            <th>Eat</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-        <!-- uncategorized  -->
-        <table id="uncategorized">
-          <tr>
-            <th>uncategorized</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
+          <input type="text" name="name" placeholder="What do you want to accomplish today?" >
+        </input>
       </div>
-    </main>
-  </body>
+      <div class="submit-button">
+        <button type="submit" value="submit">Add Item</button>
+      </div>
+    </form>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Choose a new category</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="radio">
+              <label><input type="radio" name="optradio" checked value="3">Buy</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value="4">Read</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value="1">Watch</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" value="2">Eat</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-primary" id="tododelete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tables">
+      <!-- products  -->
+      <table id="products">
+        <tr>
+          <th>Buy</th>
+        </tr>
+        <tr>
+          <td class="products"></td>
+        </tr>
+      </table>
+      <!-- books  -->
+      <table id="books">
+        <tr>
+          <th>Read</th>
+        </tr>
+        <tr>
+          <td class="books"></td>
+        </tr>
+      </table>
+      <!-- film/shows  -->
+      <table id="film_shows">
+        <tr>
+          <th>Watch</th>
+        </tr>
+        <tr>
+          <td class="film_shows"></td>
+        </tr>
+      </table>
+      <!-- restaurants  -->
+      <table id="restaurants">
+        <tr>
+          <th>Eat</th>
+        </tr>
+        <tr>
+          <td class="restaurants"></td>
+        </tr>
+      </table>
+      <!-- uncategorized  -->
+      <table id="uncategorized">
+        <tr>
+          <th>Uncategorized</th>
+        </tr>
+        <tr>
+          <td class="uncategorized"></td>
+        </tr>
+      </table>
+    </div>
+  </main>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
 </html>
 
