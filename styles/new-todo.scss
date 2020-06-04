@@ -1,17 +1,17 @@
 form {
+  margin-top: 10rem;
   display: flex;
   flex-flow: column wrap;
   align-content: center;
 
   .text-box {
-    width: 70%;
+    width: 55%;
     font-size: 3rem;
-    // align-items: center;
-    // overflow-wrap: anywhere;
     margin-top: 2rem;
     margin-bottom: 2rem;
 
     input {
+      font-weight: 900;
       text-align: center;
       border: 0px;
       border-bottom: solid 0.3rem;
@@ -25,12 +25,10 @@ form {
     width: 100%;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    // border-width: 0 0 5px 0;
   }
 
   .submit-button {
     display: flex;
-
     justify-content: center;
     align-content: center;
 
@@ -40,11 +38,7 @@ form {
       background-color: #14A697;
       border: 0;
       color: white;
+      // padding: 1rem;
     }
   }
-
-  button {
-    border: solid;
-  }
-
-}
+};
