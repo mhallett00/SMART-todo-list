@@ -27,8 +27,8 @@ const renderTodos = function(todos) {
       $('#uncategorized').append(createTodo(todo));
     };
     $(`#item-${todo.id}`).click(()=>{
-
-      alert(JSON.stringify(todo))
+      $('#myModal').modal('show');
+      // alert(JSON.parse(JSON.stringify(todo)))
     })
   };
 
