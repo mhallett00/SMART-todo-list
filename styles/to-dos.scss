@@ -8,20 +8,30 @@
   overflow-wrap: anywhere;
 
 
-  table,
   td {
+    padding-top: 2rem;
+    font-size: 1.5rem;
     justify-items: center;
     align-items: center;
-
   }
 
-  tbody {
+  th {
+    font-size: 2rem;
     border-bottom: solid;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    tr {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
   }
 
-  thead,
-  tfoot {
-    background-color: #333;
-    color: #fff;
-  }
+  // tfoot {
+
+  //   background-color: #333;
+  //   color: #fff;
+  // }
+
 }

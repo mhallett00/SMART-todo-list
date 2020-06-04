@@ -1,4 +1,4 @@
-nav {
+.navbar {
   display: flex;
   background-color: #14A697;
   width: 100%;
@@ -16,7 +16,7 @@ nav {
   align-items: center;
 }
 
-nav .nav-header {
+.navbar .nav-header {
   justify-content: flex-end;
   font-size: 1rem;
   color: #262223;

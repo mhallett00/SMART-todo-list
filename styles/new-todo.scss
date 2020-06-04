@@ -1,34 +1,46 @@
 form {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
   flex-flow: column wrap;
   align-content: center;
 
   .text-box {
     width: 70%;
-    font-size: 2rem;
-    align-items: center;
-    overflow-wrap: anywhere;
+    font-size: 3rem;
+    // align-items: center;
+    // overflow-wrap: anywhere;
     margin-top: 2rem;
     margin-bottom: 2rem;
+
+    input {
+      text-align: center;
+      border: 0px;
+      border-bottom: solid 0.3rem;
+      width: 100%;
+      color: black;
+    }
+
   }
 
   #newToDo {
     width: 100%;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    border-width: 0 0 5px 0;
-  }
-
-  placeholder {
-    align-content: center;
+    // border-width: 0 0 5px 0;
   }
 
   .submit-button {
     display: flex;
+
     justify-content: center;
     align-content: center;
+
+    button {
+      border-radius: 0.4rem;
+      font-size: 2rem;
+      background-color: #14A697;
+      border: 0;
+      color: white;
+    }
   }
 
   button {

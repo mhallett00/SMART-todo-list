@@ -1,4 +1,4 @@
-nav {
+.navbar {
     display: flex;
     background-color: #14A697;
     width: 100%;
@@ -14,6 +14,10 @@ nav {
     padding-bottom: 1.5rem;
     position: fixed;
     align-items: center;
+
+  .bg-success {
+
+  }
 
   .nav-header {
     justify-content: flex-end;
