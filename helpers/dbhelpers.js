@@ -74,7 +74,7 @@ module.exports = (db) => {
     .catch(err => console.error(500));
   };
 
-  const deleteToDo = function (todo) {
+  const editStatusToDo = function (todo) {
     let query = `
       UPDATE to_dos
       SET status_id = ${todo.status_id}
@@ -136,5 +136,5 @@ UPDATE to_dos
     .catch(err => console.error(500));
   }
 
-  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId, deleteToDo };
+  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId, editStatusToDo };
 };
