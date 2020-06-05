@@ -69,7 +69,7 @@ module.exports = (db) => {
     INSERT INTO users (name, email, password)
     VALUES ($1, $2, $3)
     RETURNING *;
-    `, [name, email, bcrypt.hashSync(password, 10)])
+    `, [name, email, password])
     .then (res => res.rows[0])
     .catch(err => console.error('error adding new user',err))
   };
