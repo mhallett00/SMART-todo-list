@@ -11,6 +11,7 @@ const app        = express();
 const morgan     = require('morgan');
 const cookieSession = require('cookie-session');
 const request  = require('request');
+// const bcrypt = require('bcrypt');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -43,6 +44,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const todosRoutes = require("./routes/todos");
+const registerRoutes = require("./routes/register");
 // const todosEditRoutes = require("./routes/edit");
 // const apiPing = require("./routes/api")
 // const todosIDRoutes = require("./routes/todos:id");
@@ -52,6 +54,7 @@ const todosRoutes = require("./routes/todos");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/to_dos", todosRoutes(dbhelpers));
+app.use("/api/register", registerRoutes(dbhelpers));
 // app.use("/api/to_dos/edit", todosEditRoutes(dbhelpers));
 // app.use("/https://www.googleapis.com/books/v1/volumes?q=flowers+intitle:keyes&`key`=AIzaSyAKjPZ7x_sUR7okP5SJEoY0MDHMVsseZfo", apiPing(dbhelpers));
 
@@ -64,6 +67,11 @@ app.use("/api/to_dos", todosRoutes(dbhelpers));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/register", (req, res) => {
+  console.log(req)
+  res.render("register");
 });
 
 app.get("/login/:id", (req,res) => {
