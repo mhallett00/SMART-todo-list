@@ -44,6 +44,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const todosRoutes = require("./routes/todos");
 const registerRoutes = require("./routes/register");
+const loginRoutes = require("./routes/login");
 // const logoutRoutes = require("./routes/logout");
 // const todosEditRoutes = require("./routes/edit");
 // const apiPing = require("./routes/api")
@@ -55,6 +56,7 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/to_dos", todosRoutes(dbhelpers));
 app.use("/register", registerRoutes(dbhelpers));
+app.use("/login", loginRoutes(dbhelpers));
 // app.use("/logout", logoutRoutes);
 // app.use("/api/to_dos/edit", todosEditRoutes(dbhelpers));
 // app.use("/https://www.googleapis.com/books/v1/volumes?q=flowers+intitle:keyes&`key`=AIzaSyAKjPZ7x_sUR7okP5SJEoY0MDHMVsseZfo", apiPing(dbhelpers));

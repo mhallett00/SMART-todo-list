@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { getUserWithEmail } = require('../helpers/database');
+const { getUserWithEmail } = require('../helpers/dbhelpers');
 
 module.exports = (dbhelpers) => {
   // loads login/register page
@@ -8,7 +8,7 @@ module.exports = (dbhelpers) => {
     // we need to install cookies (cookieSession)?
     if (req.session.user_id) {
       //redirects to todos (we needs todos ejs)
-      res.redirect('/todos');
+      res.redirect('/');
 
     } else {
       let templateVars = {
