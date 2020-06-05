@@ -74,6 +74,18 @@ module.exports = (db) => {
     .catch(err => console.error(500));
   };
 
+  const newUser = (userObj) => {
+    const { name, email, password } = userObj;
+    return db.query( `
+    INSERT INTO users (name, email, password)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+    `, [name, email, bcrypt.hashSync(password, 10)])
+    .then (res => res.rows[0])
+    .catch(err => console.error('error adding new user',err))
+  };
+
+
   const deleteToDo = function (todo) {
     let query = `
       UPDATE to_dos
@@ -136,5 +148,5 @@ UPDATE to_dos
     .catch(err => console.error(500));
   }
 
-  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId, deleteToDo };
+  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId, deleteToDo, newUser };
 };
