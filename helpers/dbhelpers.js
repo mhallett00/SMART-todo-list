@@ -1,14 +1,3 @@
-// const { Pool } = require('pg');
-// const pool = new Pool({
-//   user: 'labber',
-//   password: 'labber',
-//   host: 'localhost',
-//   database: 'midterm'
-// });
-
-// const db = pool;
-
-
 module.exports = (db) => {
 
   const getUserWithEmail = function(email) {
@@ -85,8 +74,8 @@ module.exports = (db) => {
     .catch(err => console.error('error adding new user',err))
   };
 
+  const editStatusToDo = function (todo) {
 
-  const deleteToDo = function (todo) {
     let query = `
       UPDATE to_dos
       SET status_id = ${todo.status_id}
@@ -101,42 +90,6 @@ module.exports = (db) => {
     .catch(err => console.error(500));
   };
 
-  // sql?
-  // user clicks todo item on list
-  // menu comes up with 4 categories
-  // select category, click ok (submit)
-  // we have a category name on submission, but we need a category ID
-  // variable UI display: Watch -> html id: filmShow -> table name: film_shows = category_id?
-  // SELECT category_id FROM categories where category.name = ${categorySubmission}
-
-/*
-UPDATE to_dos
-  SET category_id = ${newCatId}
-  WHERE to_dos.id = (SELECT id
-    FROM to_dos
-    WHERE to_dos.name = ${todoName})
-  RETURNING *;
-  */
-
-
-  // const updateTodo = function(newCatId, todoName, userId) {
-  //   console.log('HELLO');
-  //   let query = `
-  //   UPDATE to_dos
-  //   SET category_id = ${newCatId}
-  //   WHERE to_dos.id = (SELECT id
-  //     FROM to_dos
-  //     WHERE to_dos.name = ${todoName}
-  //     AND user_id = ${userId})
-  //   RETURNING *
-  //   `;
-  //   return db.query(query)
-  //   .then(data => {
-  //     // console.log(data);
-  //     data.rows})
-  //   .catch(err => console.error(500));
-  // }
-
   const getTodoId = function(todoName) {
     let query = `
     SELECT id
@@ -148,5 +101,5 @@ UPDATE to_dos
     .catch(err => console.error(500));
   }
 
-  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId, deleteToDo, newUser };
+  return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId, editStatusToDo, newUser };
 };

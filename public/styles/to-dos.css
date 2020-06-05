@@ -23,6 +23,10 @@
   align-items: center;
 }
 
+.tables table td .strike {
+  text-decoration: line-through;
+}
+
 .tables table th {
   font-size: 2rem;
   border-bottom: solid;
