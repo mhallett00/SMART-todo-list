@@ -39,23 +39,25 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const todosRoutes = require("./routes/todos");
 const registerRoutes = require("./routes/register");
+<<<<<<< HEAD
 const loginRoutes = require("./routes/login");
 // const logoutRoutes = require("./routes/logout");
 // const todosEditRoutes = require("./routes/edit");
 // const apiPing = require("./routes/api")
 // const todosIDRoutes = require("./routes/todos:id");
+=======
+>>>>>>> 2444b87cc3fb8624a1957ca6b7bdc93e0358b812
 
 // Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/to_dos", todosRoutes(dbhelpers));
 app.use("/register", registerRoutes(dbhelpers));
+<<<<<<< HEAD
 app.use("/login", loginRoutes(dbhelpers));
 // app.use("/logout", logoutRoutes);
 // app.use("/api/to_dos/edit", todosEditRoutes(dbhelpers));
@@ -64,6 +66,8 @@ app.use("/login", loginRoutes(dbhelpers));
 // app.use("/todos:id", todosIDRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
+=======
+>>>>>>> 2444b87cc3fb8624a1957ca6b7bdc93e0358b812
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -78,25 +82,6 @@ app.get("/login/:id", (req,res) => {
   res.redirect("/");
 });
 
-// app.post('/logout', (req, res) => {
-//   //clears cookieSession
-//   req.session = null;
-//   //redirect to login/register page
-//   res.redirect('/register');
-
-// });
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
-
-// GET                 /todos                         index action               index page to display all lists
-
-// GET                 /todos/:id                     show action                displays a users todos on ID in url
-// GET                 /todos/:entry/edit(?)          edit action                displays edit form based on ID in url
-// GET                 /login/:id                     login bypass
-// GET                 /logout                        logout user                logout user
-// POST                /todos                         create action              add an item to list
-// POST                /register                      register action            register user
-// GET                 /register                      show action                displays user register form

@@ -1,0 +1,10 @@
+#modal-header .modal-header {
+  background-color: red;
+  color: #262223;
+  font-weight: 900;
+}
+
+.modal-title {
+  font-weight: 900;
+  background-color: red;
+}
