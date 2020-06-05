@@ -36,6 +36,24 @@ const renderTodos = function(todos) {
     })
   };
 
+  $('input[type="checkbox"]').click(function() {
+    const $todoId = $(this).attr('value');
+    const $status_id = 2
+    if ($(this).is(":checked")) {
+      $(this).siblings('label').addClass('strike');
+      $.ajax({ url: '/api/to_dos/status', method: 'POST', data: { status_id: 2, id: $todoId }})
+        .done(function(result) {
+        })
+    } else if ($(this).is(":not(:checked)")) {
+      console.log("Checkbox is unchecked.");
+      $(this).siblings('label').removeClass('strike');
+      $.ajax({ url: '/api/to_dos/status', method: 'POST', data: { status_id: 1, id: $todoId }})
+        .done(function(result) {
+        })
+      console.log($(this).attr('value'));
+    }
+  });
+
 };
 
 // somehow we need to tie modal show with this modal
@@ -83,11 +101,17 @@ $('#newToDo').submit(function(event) {
 
 // creates an html snippet to wrap a new todo for display
 const createTodo = function(todo) {
-  console.log(todo)
+  console.log(todo);
+  let statusComplete = "";
+  let checkBox = "";
+  if (todo.status_id === 2) {
+    statusComplete = "strike"
+    checkBox = "checked";
+  };
   const $todo = $( `
   <div class="form-check" id="divCheck${todo.id}">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck${todo.id}">
-  <label class="form-check-label" for="defaultCheck1" id='item-${todo.id}'>
+  <input class="form-check-input" ${checkBox} type="checkbox" value="${todo.id}" id="defaultCheck${todo.id}">
+  <label class="form-check-label ${statusComplete}" for="defaultCheck1" id='item-${todo.id}'>
   ${todo.name}
   </label>
   </div>`);
@@ -95,8 +119,6 @@ const createTodo = function(todo) {
   return $todo;
 };
 
-{/* <p id='item-${todo.id}' >${todo.name}</p>`
- */}
 loadTodos();
 
 
