@@ -6,7 +6,7 @@ module.exports = (db) => {
       FROM users
       WHERE users.email = $1
     `, [email])
-    .then(res => res.rows[0]);
+      .then(res => res.rows[0]);
   };
 
   const getIdWithUsername = function(name) {
@@ -15,14 +15,9 @@ module.exports = (db) => {
       FROM users
       WHERE users.name = $1
     `, [name])
-    .then(res => res.rows[0].id);
+      .then(res => res.rows[0].id);
   };
 
-  /**
-   * Add a property to the database
-   * @param {{}} property An object containing all of the property details.
-   * @return {Promise<{}>} A promise to the property.
-   */
   const addTodo = function(todo) {
     return db.query(`
     INSERT INTO to_dos (
@@ -30,7 +25,7 @@ module.exports = (db) => {
       VALUES ($1, $2, $3, 1)
     RETURNING *;
     `, [todo.user_id, todo.name, todo.category_id])
-    .then (res => res.rows);
+      .then(res => res.rows);
   };
 
   const getTodos = function(userId) {
@@ -41,11 +36,10 @@ module.exports = (db) => {
     WHERE users.name = '${userId}'
     `;
     return db.query(query)
-    .then(data => {
-      // console.log(data.rows)
-      return data.rows
-    })
-    .catch(err => console.error(500));
+      .then(data => {
+        return data.rows;
+      })
+      .catch(err => console.error(500));
   };
 
   const updateTodo = function(todo) {
@@ -54,40 +48,38 @@ module.exports = (db) => {
       SET category_id = ${todo.category_id}
       WHERE id = ${todo.id}
       RETURNING *;
-    `
+    `;
     return db.query(query)
-    .then(data => {
-      // console.log(data.rows)
-      return data.rows
-    })
-    .catch(err => console.error(500));
+      .then(data => {
+       return data.rows;
+      })
+      .catch(err => console.error(500));
   };
 
   const newUser = (userObj) => {
     const { name, email, password } = userObj;
-    return db.query( `
+    return db.query(`
     INSERT INTO users (name, email, password)
     VALUES ($1, $2, $3)
     RETURNING *;
     `, [name, email, password])
-    .then (res => res.rows[0])
-    .catch(err => console.error('error adding new user',err))
+      .then(res => res.rows[0])
+      .catch(err => console.error('error adding new user',err));
   };
 
-  const editStatusToDo = function (todo) {
+  const editStatusToDo = function(todo) {
 
     let query = `
       UPDATE to_dos
       SET status_id = ${todo.status_id}
       WHERE id = ${todo.id}
       RETURNING*;
-    `
+    `;
     return db.query(query)
-    .then(data => {
-      // console.log(data.rows)
-      return data.rows
-    })
-    .catch(err => console.error(500));
+      .then(data => {
+        return data.rows;
+      })
+      .catch(err => console.error(500));
   };
 
   const getTodoId = function(todoName) {
@@ -97,9 +89,9 @@ module.exports = (db) => {
     WHERE to_dos.name = ${todoName}
     `;
     return db.query(query)
-    .then(data => data.rows)
-    .catch(err => console.error(500));
-  }
+      .then(data => data.rows)
+      .catch(err => console.error(500));
+  };
 
   return { addTodo, getUserWithEmail, getIdWithUsername, getTodos, updateTodo, getTodoId, editStatusToDo, newUser };
 };
