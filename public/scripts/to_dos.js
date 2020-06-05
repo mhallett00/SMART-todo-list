@@ -75,7 +75,7 @@ const renderTodos = function(todos) {
       const status_id = 3;
       const id = Number($("input[name='optradio']:checked").attr("id"));
       console.log('hello', typeof status_id, status_id);
-      $.ajax({ url: '/api/to_dos/delete', method: 'POST', data: {status_id, id} })
+      $.ajax({ url: '/api/to_dos/status', method: 'POST', data: {status_id, id} })
       .done(function(result) {
         $('#myModal').modal('hide');
         $("input[type='radio']").removeAttr("id");
