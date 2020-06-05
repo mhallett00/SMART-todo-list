@@ -20,6 +20,10 @@
       font-size: 1.5rem;
       justify-items: center;
       align-items: center;
+
+      .strike {
+        text-decoration: line-through;
+        }
     }
 
     th {
