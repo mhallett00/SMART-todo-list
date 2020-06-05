@@ -1,10 +1,8 @@
 const express = require('express');
 const router  = express.Router();
-//install bcrypt
-const bcrypt  = require('bcrypt');
 const { getUserWithEmail } = require('../helpers/database');
 
-module.exports = () => {
+module.exports = (dbhelpers) => {
   // loads login/register page
   router.get("/", (req, res) => {
     // we need to install cookies (cookieSession)?
@@ -31,7 +29,7 @@ module.exports = () => {
 
       } else {
         // check hashed password
-        if (!bcrypt.compareSync(req.body.password, user.password)) {
+        if (req.body.password, user.password) {
           res.json({error: 'Bad Password'});
         } else {
           req.session = { user_id: user.id };
