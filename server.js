@@ -11,7 +11,6 @@ const app        = express();
 const morgan     = require('morgan');
 const cookieSession = require('cookie-session');
 const request  = require('request');
-// const bcrypt = require('bcrypt');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -45,6 +44,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const todosRoutes = require("./routes/todos");
 const registerRoutes = require("./routes/register");
+// const logoutRoutes = require("./routes/logout");
 // const todosEditRoutes = require("./routes/edit");
 // const apiPing = require("./routes/api")
 // const todosIDRoutes = require("./routes/todos:id");
@@ -54,7 +54,8 @@ const registerRoutes = require("./routes/register");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/to_dos", todosRoutes(dbhelpers));
-app.use("/api/register", registerRoutes(dbhelpers));
+app.use("/register", registerRoutes(dbhelpers));
+// app.use("/logout", logoutRoutes);
 // app.use("/api/to_dos/edit", todosEditRoutes(dbhelpers));
 // app.use("/https://www.googleapis.com/books/v1/volumes?q=flowers+intitle:keyes&`key`=AIzaSyAKjPZ7x_sUR7okP5SJEoY0MDHMVsseZfo", apiPing(dbhelpers));
 
@@ -69,16 +70,19 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/register", (req, res) => {
-  console.log(req)
-  res.render("register");
-});
-
 app.get("/login/:id", (req,res) => {
   req.session.user_id = req.params.id;
   console.log(req.session.user_id);
   res.redirect("/");
 });
+
+// app.post('/logout', (req, res) => {
+//   //clears cookieSession
+//   req.session = null;
+//   //redirect to login/register page
+//   res.redirect('/register');
+
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
