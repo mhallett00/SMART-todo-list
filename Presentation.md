@@ -1,5 +1,20 @@
 # Smart TODO List
+
+## What it does
+
+User enters text into the form and the app automatically categorizes it into one of:
+
+- *To Read*
+- *To Watch*
+- *To Eat*
+- *To Buy*
+
+## Why we chose it
+
+We wanted to learn more about APIs and the app actually sounded powerful.
+
 ### User Stories
+
 > As a user
 >
 >I want to record things I'm interested in
@@ -18,34 +33,28 @@
 >
 > because my list my choice
 
-## What it does
-- User enters text into the form and the app automatically categorizes it into one of:
-1. *To Read*
-2. *To Watch*
-3. *To Eat*
-4. *To Buy*
-
-## Why we chose it
-We wanted to learn more about APIs and the app actually sounded powerful.
-
 ## How it works
+
 When a user clicks `add`, the app searches through 4 different APIs until it finds a match.
 
 ## APIs
-We used four different APIs, one for each caetgory.
 
-1. To Read (**Google Books API**)
-2. To Watch (**OMDB API**)
-3. To Eat (**Yelp Fusion API**)
-4. To Buy (**Wolfram Alpha API**)
+We used four different APIs, one for each category.
+
+- To Read (**Google Books API**)
+- To Watch (**OMDB API**)
+- To Eat (**Yelp Fusion API**)
+- To Buy (**Wolfram Alpha API**)
 
 ## Main Problems We Had to Solve
-1. How to get our app to wait until it finishes searching each API before returning (async)
-2. How to decide which category an item should be put into
-3. How to allow the user to recategorize items
+
+- How to get our app to wait until it finishes searching each API before returning (async)
+- How to decide which category an item should be put into
+- How to allow the user to recategorize items
 
 ## How We Solved Them
-1. We wrapped each of our API calls in a `Promise.all()`
+
+- We wrapped each of our API calls in a `Promise.all()`
     - the `promise` waits for each API call to complete before returning the results
     - the output from our `apiSorter` function is an array which looks like this:
     ``` js
@@ -55,7 +64,8 @@ We used four different APIs, one for each caetgory.
     - calling four APIs means our app is a little slow
     - we traded speed for power
     
-2. We had each API call return a `boolean`
+- We had each API call return a `boolean`
+
     - achieving this was different for each API because the objects being returned were all completely different
     - the first API to return `true` sends the item into the category linked to that API (by using the index from our returned array above)
 
@@ -70,7 +80,8 @@ We used four different APIs, one for each caetgory.
       - We refactored to compare for an exact string match within the results
         - this greatly improved categorization
         
-3. We stored the item ID in a temporary `html` element
+- We stored the item ID in a temporary `html` element
+
     - We used a **Bootstrap** modal to allow the user to edit lists
     - Because the modal is a temporary element, it is not connected to the actual data from the database
     - To connect the data, we created a temporary hidden `html` element that only exists while the modal is open
@@ -79,6 +90,7 @@ We used four different APIs, one for each caetgory.
     - The item is recategorized, and the modal and the temporary element disappear
 
 ## What we would do differently
+
 - Maybe go with one API so we could more easily manipulate the data for greater sorting precision
 - With four APIs, we had do deal with a lot of data at a pretty shallow level. Pretty unwieldy
 - One API would probably be much faster
